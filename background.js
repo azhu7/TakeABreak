@@ -3,7 +3,7 @@
 
 // Called when the user clicks on the browser action.
 chrome.browserAction.onClicked.addListener(function (tab) {
-    createAlarm(0.1);
+    createAlarm(0.2);
 });
 
 // Get user input. Poses some suggested times.
