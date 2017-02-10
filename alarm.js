@@ -1,10 +1,24 @@
-﻿// Cancel all existing alarms.
+﻿// Create alarm if user enters a valid float. Triggered on enter keydown in 
+// alarmInput form.
+function userCreateAlarm(e) {
+    if (e.keyCode != 13)
+        return;
+    input = document.getElementById("alarmInput").value;
+    var duration = parseFloat(input);
+    if (isNaN(duration))
+        alert("Invalid time duration entered!")
+    else
+        createAlarm(duration);
+}
+
+// Cancel all existing alarms.
 function cancelAlarms() {
     chrome.alarms.getAll(function (alarms) {
         console.log("Cancelling " + alarms.length + " alarms");
         for (var i = 0; i < alarms.length; i++) {
             var time_left = minutesLeft(alarms[i].scheduledTime);
-            console.log("Alarm canceled: " + alarms[i].name + " (" + time_left + " minutes remaining)")
+            console.log("Alarm canceled: " + alarms[i].name + " (" +
+                time_left + " minutes remaining)")
             chrome.alarms.clear(alarms[i].name);
         }
     })
@@ -12,10 +26,9 @@ function cancelAlarms() {
 
 // Create alarm.
 function createAlarm(duration) {
-    alert("Setting alarm for " + duration + " minutes");
-    var name = "Alarm " + genAlarmID();
+    var name = "Alarm " + genAlarmID();  // Generate unique alarm name
     chrome.alarms.create(name, { delayInMinutes: duration });
-    console.log("Alarm set: " + name + " (" + duration + " minutes)");
+    alert("Alarm set: " + name + " (" + duration + " minutes)");
 }
 
 // Return next alarm ID

@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Alarm Hub</title>
+    <style>
+        body {
+            overflow: hidden;
+            margin: 40px;
+            padding: 0px;
+            background: white;
+        }
+    </style>
+    <meta charset="utf-8" />
+
+    <script src="popup.js"></script>
+    <script src="alarm.js"></script>
+
+    <script type="text/javascript">
+        userCreateAlarm();  // Let popup.js access function from alarm.js
+    </script>
+</head>
+<body>
+    <form>
+        New alarm duration (minutes):<br />
+        <input type="text" id="alarmInput"/><br />
+    </form>
+</body>
+</html>
