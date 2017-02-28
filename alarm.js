@@ -1,4 +1,13 @@
-﻿// Create alarm if user enters a valid float. Triggered on enter keydown in 
+﻿// Add keydown listener to alarmInput input form.
+document.addEventListener('DOMContentLoaded', function () {
+    var alarmInput = document.querySelector("#alarmInput");
+    if (alarmInput)
+        alarmInput.addEventListener('keydown', userCreateAlarm);
+    else
+        alert("Error: Could not find alarmInput input form!")
+});
+
+// Create alarm if user enters a valid float. Triggered on enter keydown in 
 // alarmInput form.
 function userCreateAlarm(e) {
     if (e.keyCode != 13)
@@ -17,26 +26,18 @@ function cancelAlarms() {
         console.log("Cancelling " + alarms.length + " alarms");
         for (var i = 0; i < alarms.length; i++) {
             var time_left = minutesLeft(alarms[i].scheduledTime);
-            console.log("Alarm canceled: " + alarms[i].name + " (" +
-                time_left + " minutes remaining)")
+            console.log("Alarm cancelled. (" + time_left + " minutes remaining)")
             chrome.alarms.clear(alarms[i].name);
         }
-    })
+    });
 }
 
 // Create alarm.
 function createAlarm(duration) {
-    var name = "Alarm " + genAlarmID();  // Generate unique alarm name
+    var name = "Alarm " + Date.now();  // Generate unique alarm name
     chrome.alarms.create(name, { delayInMinutes: duration });
-    alert("Alarm set: " + name + " (" + duration + " minutes)");
-}
+    alert("Alarm set for " + duration + " minutes");
 
-// Return next alarm ID
-function genAlarmID() {
-    if (typeof genAlarmID.counter == "undefined")
-        genAlarmID.counter = 0;
-    genAlarmID.counter++;
-    return genAlarmID.counter;
 }
 
 // Given an alarm's scheduledTime, return remaining time in string format
