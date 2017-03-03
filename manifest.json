@@ -10,19 +10,19 @@
   "name": "Take a Break!",
   "version": "0.5",
     "background": {
-    "scripts": ["background.js"]
+    "scripts": ["src/background.js"]
   },
   "content_scripts": [
     {
       "matches": [
         "<all_urls>"
       ],
-      "js": [ "content.js" ]
+      "js": [ "src/content.js" ]
     }
   ],
   "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "popup.html"
+    "default_icon": "images/icon.png",
+    "default_popup": "src/popup.html"
   },
   "permissions": [ "alarms" ]
 }
