@@ -4,18 +4,18 @@
     Description: Scripts for browser action popup
 */
 
-// Add keydown listener to alarmInput input form.
+// Add listeners to html input forms and buttons.
 document.addEventListener("DOMContentLoaded", function () {
     var alarmInput = document.querySelector("#alarmInput");
     var alarmCancel = document.getElementById("alarmCancel");
     var alarmDisplay = document.getElementById("alarmDisplay");
-    if (alarmInput && alarmCancel && alarmDisplay) {
-        alarmInput.addEventListener("keydown", createAlarm);
-        alarmCancel.addEventListener("click", cancelAlarms);
-        alarmDisplay.addEventListener("click", displayAlarms);
-    }
-    else
+    if (!(alarmInput && alarmCancel && alarmDisplay)) {
         alert("Error: Could not find button from popup.html!")
+        return;
+    }
+    alarmInput.addEventListener("keydown", createAlarm);
+    alarmCancel.addEventListener("click", cancelAlarms);
+    alarmDisplay.addEventListener("click", displayAlarms);
 });
 
 // Create alarm if user enters a valid float. Triggered on enter keydown in 
@@ -46,14 +46,7 @@ function minutesLeft(scheduledTime) {
 
 // Cancel all existing alarms.
 function cancelAlarms() {
-    chrome.alarms.getAll(function (alarms) {
-        console.log("Cancelling " + alarms.length + " alarms");
-        for (var i = 0; i < alarms.length; i++) {
-            var time_left = minutesLeft(alarms[i].scheduledTime);
-            console.log("Alarm cancelled. (" + time_left + " minutes remaining)")
-            chrome.alarms.clear(alarms[i].name);
-        }
-    });
+    chrome.alarms.clearAll();
     alert("All alarms cancelled");
 }
 

@@ -8,7 +8,7 @@
   "manifest_version": 2,
   
   "name": "Take a Break!",
-  "version": "0.4",
+  "version": "0.5",
     "background": {
     "scripts": ["background.js"]
   },
