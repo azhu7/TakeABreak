@@ -1,0 +1,37 @@
+﻿<!--
+    Author: Alexander Zhu
+    Date Created: February 9, 2017
+    Description: Html for browser action popup
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alarm Hub</title>
+    <style>
+        body {
+            overflow: hidden;
+            margin: 20px;
+            padding: 0px;
+            background: url("popup_background.jpg");
+        }
+        button {
+            margin-top: 10px;
+        }
+    </style>
+    <meta charset="utf-8" />
+
+    <script src="popup.js"></script>
+</head>
+<body>
+    <h1 style="text-align: center">My Alarm Hub</h1>
+    <form style="text-align: center;">New alarm duration (minutes):<br />
+        <input type="text" id="alarmInput"/><br />
+    </form>
+
+    <div style="text-align: center;">
+        <button id="alarmCancel">Cancel all alarms</button>
+        <button id="alarmDisplay">Display all alarms</button>
+    </div>
+</body>
+</html>
