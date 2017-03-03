@@ -1,4 +1,10 @@
-﻿{
+﻿/**
+    Author: Alexander Zhu
+    Date Created: February 7, 2017
+    Description: Chrome extension characteristics
+*/
+
+{
   "manifest_version": 2,
   
   "name": "Take a Break!",
