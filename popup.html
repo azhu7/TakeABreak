@@ -13,7 +13,10 @@
             overflow: hidden;
             margin: 20px;
             padding: 0px;
-            background: white;
+            background: url("popup_background.jpg");
+        }
+        button {
+            margin-top: 10px;
         }
     </style>
     <meta charset="utf-8" />
@@ -21,14 +24,13 @@
     <script src="popup.js"></script>
 </head>
 <body>
-    <h1>My Alarm Hub</h1>
-    <form style="text-align: center;">
-        New alarm duration (minutes):<br />
+    <h1 style="text-align: center">My Alarm Hub</h1>
+    <form style="text-align: center;">New alarm duration (minutes):<br />
         <input type="text" id="alarmInput"/><br />
     </form>
 
     <div style="text-align: center;">
-        <button id="alarmCancel" style="margin-top: 10px; margin-bottom: 10px;">Cancel all alarms</button>
+        <button id="alarmCancel">Cancel all alarms</button>
         <button id="alarmDisplay">Display all alarms</button>
     </div>
 </body>
