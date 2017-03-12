@@ -75,7 +75,6 @@ function displayAlarms() {
 }
 
 // Given an alarm's scheduledTime, return remaining time in string format.
-// TODO: can replace this with Date methods (see showTime())
 function minutesLeft(scheduledTime) {
     var ms_left = scheduledTime - Date.now();
     var min = ms_left / 1000 / 60 << 0;
