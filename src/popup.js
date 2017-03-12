@@ -32,7 +32,6 @@ function createAlarm(e) {
         var name = "Alarm " + Date.now();  // Generate unique alarm name
         chrome.alarms.create(name, { delayInMinutes: duration });
         console.log("Alarm set. (" + duration + " minutes)");
-        alert("Alarm set for " + duration + " minutes");
     }
 }
 
@@ -53,7 +52,6 @@ function cancelAlarm(e) {
 // Cancel all existing alarms.
 function cancelAllAlarms() {
     chrome.alarms.clearAll();
-    alert("All alarms cancelled");
 }
 
 // Display remaining time for all existing alarms in popup body.
