@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var alarmCancel = document.getElementById("alarmCancel");
     var alarmDisplay = document.getElementById("alarmDisplay");
     if (!(alarmInput && alarmCancel && alarmDisplay)) {
-        alert("Error: Could not find button from popup.html!")
+        alert("Error: Could not find button from popup.html!");
         return;
     }
     alarmInput.addEventListener("keydown", createAlarm);
@@ -21,12 +21,12 @@ document.addEventListener("DOMContentLoaded", function () {
 // Create alarm if user enters a valid float. Triggered on enter keydown in 
 // alarmInput form.
 function createAlarm(e) {
-    if (e.keyCode != 13)
+    if (e.keyCode !== 13)
         return;
     input = document.getElementById("alarmInput").value;
     var duration = parseFloat(input);
     if (isNaN(duration))
-        alert("Invalid time duration entered!")
+        alert("Invalid time duration entered!");
     else {
         var name = "Alarm " + Date.now();  // Generate unique alarm name
         chrome.alarms.create(name, { delayInMinutes: duration });
@@ -38,8 +38,8 @@ function createAlarm(e) {
 // Given an alarm's scheduledTime, return remaining time in string format.
 function minutesLeft(scheduledTime) {
     var ms_left = scheduledTime - Date.now();
-    var min = (ms_left / 1000 / 60) << 0;
-    var sec = (ms_left / 1000) % 60 << 0;
+    var min = ms_left / 1000 / 60 << 0;
+    var sec = ms_left / 1000 % 60 << 0;
     var separator = sec < 10 ? ":0" : ":";
     return min + separator + sec;
 }
