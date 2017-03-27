@@ -4,6 +4,8 @@
     Description: Scripts for browser action popup
 */
 
+//*** TODO: Attach message to alarm?
+
 // Add listeners to html input forms and buttons.
 document.addEventListener("DOMContentLoaded", function () {
     displayAlarms();
@@ -61,13 +63,13 @@ function displayAlarms() {
         chrome.alarms.getAll(function (alarms) {
             var output = "";
             if (!alarms.length)
-                output = "No alarms set."
+                output = "No alarms set.";
             else
                 for (var i = 0; i < alarms.length; i++) {
                     var time_left = minutesLeft(alarms[i].scheduledTime);
-                    output += "Alarm " + (i + 1) + " - " + time_left + " min remaining\n";
+                    output += "Alarm " + (i + 1) + " - " + time_left + " min remaining<br>";
                 }
-            document.getElementById("time").innerHTML = output;
+            document.getElementById("allAlarms").innerHTML = output;
         });
     }
 }

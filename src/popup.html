@@ -4,8 +4,6 @@
     Description: Html for browser action popup
 -->
 
-<!--TODO: fix up boxes, input placements-->
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,12 +11,17 @@
     <style>
         body {
             overflow: hidden;
+            width:200px;
             margin: 20px;
             padding: 0px;
+            text-align: center;
             background: url("../images/popup_background.jpg");
         }
         button {
             margin-top: 10px;
+        }
+        input {
+            width:30px;
         }
     </style>
     <meta charset="utf-8" />
@@ -26,19 +29,23 @@
     <script src="popup.js"></script>
 </head>
 <body>
-    <h1 style="text-align: center">My Alarm Hub</h1>
-    <form style="text-align: center">New alarm duration (minutes):<br />
+    <h1>My Alarm Hub</h1>
+
+    <form>
+        <label>New alarm duration (minutes):</label>
         <input type="text" id="alarmInput"/><br />
     </form>
 
-    <p id="time" style="text-align: center;"></p>
+    <p id="allAlarms"></p>
 
-    <form style="text-align: center">Cancel alarm:<br />
-        <input type="text" id="alarmCancel" /><br />
+    <form>
+        <label>Cancel alarm:</label>
+        <input type="text" id="alarmCancel" /><br />    
     </form>
 
-    <div style="text-align: center;">
+    <div>
         <button id="alarmCancelAll">Cancel all alarms</button>
     </div>
+   
 </body>
 </html>
