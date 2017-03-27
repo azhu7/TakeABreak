@@ -9,24 +9,24 @@
 // Add listeners to html input forms and buttons.
 document.addEventListener("DOMContentLoaded", function () {
     displayAlarms();
-    var alarmInput = document.querySelector("#alarmInput");
+    var alarmCreate = document.querySelector("#alarmCreate");
     var alarmCancel = document.querySelector("#alarmCancel");
     var alarmCancelAll = document.getElementById("alarmCancelAll");
-    if (!(alarmInput && alarmCancel && alarmCancelAll)) {
+    if (!(alarmCreate && alarmCancel && alarmCancelAll)) {
         alert("Error: Could not find button from popup.html!");
         return;
     }
-    alarmInput.addEventListener("keydown", createAlarm);
+    alarmCreate.addEventListener("keydown", createAlarm);
     alarmCancel.addEventListener("keydown", cancelAlarm);
     alarmCancelAll.addEventListener("click", cancelAllAlarms);
 });
 
 // Create alarm if user enters a valid float. Triggered on enter keydown in 
-// alarmInput form.
+// alarmCreate form.
 function createAlarm(e) {
     if (e.keyCode !== 13)
         return;
-    input = document.getElementById("alarmInput").value;
+    input = document.getElementById("alarmCreate").value;
     var duration = parseFloat(input);
     if (isNaN(duration))
         alert("Invalid time duration entered!");
